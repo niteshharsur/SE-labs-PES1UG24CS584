@@ -1,0 +1,35 @@
+@startuml
+
+left to right direction
+
+skinparam packageStyle rectangle
+skinparam actorStyle stickman
+
+actor "Prosumer Resident" as Prosumer
+actor "Co-op Manager" as Manager
+actor "Smart Meter System" as Meter
+
+rectangle "Community Solar Credit Allocation Manager" {
+
+    usecase "UC-01\nRecord Solar Generation" as UC1
+    usecase "UC-02\nView Credit Balance" as UC2
+    usecase "UC-03\nTransfer Solar Credits" as UC3
+    usecase "UC-04\nTrack Monthly Billing Offset" as UC4
+    usecase "UC-05\nReview Community Credit Activity" as UC5
+
+    usecase "UC-06\nValidate Credit Balance" as UC6
+    usecase "UC-07\nHandle Insufficient Credit Balance" as UC7
+}
+
+Meter --> UC1
+
+Prosumer --> UC2
+Prosumer --> UC3
+Prosumer --> UC4
+
+Manager --> UC5
+
+UC3 ..> UC6 : <<include>>
+UC7 ..> UC3 : <<extend>>
+
+@enduml
