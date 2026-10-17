@@ -1,0 +1,12 @@
+Bengaluru Books -> Ravi Kumar: In Transit
+  with courier: True
+  cost: 95.0
+Gadget Hub -> Sneha Rao: Picked Up
+  with courier: True
+  cost: 50
+Spice Store -> Imran Khan: Delivered
+  with courier: False
+  cost: 140
+Unknown tracking id TRK00000
+Delivery OTP for TRK10003 is 9574
+Parcels booked today: 3

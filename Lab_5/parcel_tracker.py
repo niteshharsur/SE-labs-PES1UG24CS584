@@ -1,4 +1,4 @@
-"""Book parcels, track delivery progress, and provide secure courier helpers."""
+"""Book parcels, track delivery progress, and provide courier helpers."""
 
 import ipaddress
 import os
@@ -19,9 +19,11 @@ def book_parcel(sender, receiver, weight_kg, history=None):
     if history is None:
         history = []
     tracking_id = "TRK" + str(10001 + len(PARCELS))
-    PARCELS[tracking_id] = {"sender": sender, "receiver": receiver,
-                           "weight": weight_kg, "status": 0,
-                           "booked": str(date.today())}
+    PARCELS[tracking_id] = {
+        "sender": sender, "receiver": receiver,
+        "weight": weight_kg, "status": 0,
+        "booked": str(date.today()),
+    }
     history.append(tracking_id)
     return tracking_id
 
@@ -36,7 +38,7 @@ def advance_status(tracking_id):
 
 def shipping_cost(weight_kg):
     """Return the base fee plus the charge for weight above one kilogram."""
-    cost=50
+    cost = 50
     if weight_kg > 1:
         cost += (weight_kg - 1) * 30
     return round(cost, 2)
@@ -59,7 +61,7 @@ def is_with_courier(tracking_id):
 
 
 def label_path():
-    """Create a secure empty label file; the caller must remove it when done."""
+    """Create a secure empty label file; the caller owns its cleanup."""
     descriptor, path = tempfile.mkstemp(suffix=".txt")
     os.close(descriptor)
     return path
@@ -72,14 +74,14 @@ def ping_hub(hub_address):
     if executable is None:
         raise FileNotFoundError("The system ping utility is unavailable")
     count_option = "-n" if os.name == "nt" else "-c"
-    # B603 reviewed: resolved executable, validated IP, argument list, no shell.
+    # B603 reviewed: resolved executable, valid IP, argument list, no shell.
     return subprocess.check_output(  # nosec B603
         [executable, count_option, "1", address], shell=False, timeout=10
     )
 
 
 def main():
-    """Demonstrate booking, status updates, pricing, and a secure delivery OTP."""
+    """Demonstrate booking, status updates, pricing, and a secure OTP."""
     first = book_parcel("Bengaluru Books", "Ravi Kumar", 2.5)
     second = book_parcel("Gadget Hub", "Sneha Rao", 0.8)
     third = book_parcel("Spice Store", "Imran Khan", 4)
@@ -92,8 +94,11 @@ def main():
         print(track_parcel(tracking_id))
         print("  with courier:", is_with_courier(tracking_id))
         print("  cost:", shipping_cost(PARCELS[tracking_id]["weight"]))
-    print(track_parcel("TRK00000")) # unknown id
+    print(track_parcel("TRK00000"))  # unknown id
     delivery_otp = 1000 + secrets.randbelow(9000)
     print("Delivery OTP for", third, "is", delivery_otp)
-    print("Parcels booked today:",len(PARCELS))
-main()
+    print("Parcels booked today:", len(PARCELS))
+
+
+if __name__ == "__main__":
+    main()

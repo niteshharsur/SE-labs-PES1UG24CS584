@@ -1,0 +1,13 @@
+test_booking_history_and_status_boundary (test_parcel_tracker.ParcelTrackerTests.test_booking_history_and_status_boundary) ... ok
+test_demo_matches_original_except_random_otp (test_parcel_tracker.ParcelTrackerTests.test_demo_matches_original_except_random_otp) ... ok
+test_import_does_not_run_demo (test_parcel_tracker.ParcelTrackerTests.test_import_does_not_run_demo) ... ok
+test_label_files_exist_and_have_distinct_names (test_parcel_tracker.ParcelTrackerTests.test_label_files_exist_and_have_distinct_names) ... ok
+test_malicious_hub_addresses_never_start_a_process (test_parcel_tracker.ParcelTrackerTests.test_malicious_hub_addresses_never_start_a_process) ... ok
+test_ping_missing_utility_and_timeout_are_visible (test_parcel_tracker.ParcelTrackerTests.test_ping_missing_utility_and_timeout_are_visible) ... ok
+test_ping_uses_resolved_path_argument_list_and_no_shell (test_parcel_tracker.ParcelTrackerTests.test_ping_uses_resolved_path_argument_list_and_no_shell) ... ok
+test_pricing_and_unknown_id (test_parcel_tracker.ParcelTrackerTests.test_pricing_and_unknown_id) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.043s
+
+OK
