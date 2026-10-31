@@ -1,16 +1,15 @@
-# L6_L7_35 — Customs Duty Calculator
+# Lab 6: Code and Branch Coverage
 
-Lab 6: Code and Branch Coverage
+**Nitesh Harsur | PES1UG24CS584**
 
-## About
+Assigned application: Customs Duty Calculator.
 
-A small Python module that works out import duty rates and totals and decides the customs clearance channel.
+- Line coverage: **100%**, 19 passing tests.
+- Branch coverage: **100%**, 49 passing tests, all 28 branch outcomes covered.
+- [Analysis and reproduction commands](Lab6_Report.md)
+- [Line coverage screenshot](evidence/code_coverage.png)
+- [Branch coverage screenshot](evidence/branch_coverage.png)
 
-## Files
+The two test files are named according to the handout and must be passed explicitly to pytest. See the report for the commands.
 
-| File | Description |
-|------|-------------|
-| `customs_duty.py` | The module under test |
-| `test_customs_duty.py` | Starter test file |
-
-Refer to the lab handout for instructions.
+Original assignment repository: https://github.com/SETAPESU26/L6_L7_35_customs_duty
